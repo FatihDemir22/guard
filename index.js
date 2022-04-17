@@ -16,16 +16,19 @@ const db = new Database();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({origin:true,credentials: true}));
-app.use(express.static(__dirname + "/out"))
+app.use(express.static(__dirname + "/out/_next"))
+
 //EXPRESS SERVER AYARLAR
 
+app.get()
+
 // BOT
-let kufurliste = ["aq","amk","sik","sg","oç","piç","puşt","orospu","kahoe"];
-let reklamliste = ["https","http","com","www"];
+let kufurliste = ["aq","amk","sik","sg","oç","piç","puşt","orospu","kahpe"];
+let reklamliste = ["https://","http://","com","www"];
 
 client.on("messageCreate",message => {
 	if(kufurliste.some(k => message.content.toLowerCase().split(" ").includes(k)) && db.get("kufurEngel")) message.delete().catch(err => {  });
-	else if(reklamliste.some(k => message.content.toLowerCase().split(" ").includes(k)) && db.get("reklamEngel")) message.delete().catch(err => {  });
+	else if(reklamliste.some(k => message.content.toLowerCase().includes(k)) && db.get("reklamEngel")) message.delete().catch(err => {  });
 });
 
 client.on("channelDelete",async channel => {
