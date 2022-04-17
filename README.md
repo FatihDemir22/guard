@@ -11,5 +11,6 @@ Siteli Guard Bot V13
 1).env dosyasını doldurun.<br/>
 2)Otomatik çalışacaktır.<br/>
 3)Panele ulaşmak için 'Share' butonuna tıklayıp oradan link'i alabilirsiniz.<br/>
+4)Panele girmek için [link]/panel/[koyduğunuz şifre]
 
 ### [Buraya tıklayarak kodlar paylaştığım sunucuya gidebilirsiniz.](https://discord.gg/Pur3RnGua2)
