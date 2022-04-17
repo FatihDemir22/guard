@@ -1,11 +1,10 @@
 //TANIMLAR
-const config = require("./config.json");
 const express = require("express");
 const app = new express();
 const bodyParser = require("body-parser");
 const { Client , MessageEmbed } = require('discord.js');
 const client = new Client({ intents: 32767 });
-client.login(config.token);
+client.login(process.env.token);
 client.on("ready",async () => { console.log("Hazır"); });
 const cors=require('cors');
 const { Database } = require("ark.db");
@@ -21,7 +20,7 @@ app.use(express.static(__dirname + "/out"))
 //EXPRESS SERVER AYARLAR
 
 // BOT
-let kufurliste = ["aq","amk","sik","sg","oç"];
+let kufurliste = ["aq","amk","sik","sg","oç","piç","puşt","orospu","kahoe"];
 let reklamliste = ["https","http","com","www"];
 
 client.on("messageCreate",message => {
@@ -92,10 +91,10 @@ app.get("/getInfo",(req,res) => {
 			kanalKoruma : db.get("kanalKoruma") || false,
 			rolKoruma : db.get("rolKoruma") || false,
 			logs : db.get("logs") || [],
-			channels : client.guilds.cache.get(config.guild).channels.cache.map(r => r).filter(c => c.type == "GUILD_TEXT").filter(c => c.guild.me.permissionsIn(c.id).toArray().includes("MANAGE_CHANNELS")),
-			members : client.guilds.cache.get(config.guild).members.cache,
-			guild : config.guild,
-			token : config.token
+			channels : client.guilds.cache.get(process.env.guild).channels.cache.map(r => r).filter(c => c.type == "GUILD_TEXT").filter(c => c.guild.me.permissionsIn(c.id).toArray().includes("MANAGE_CHANNELS")),
+			members : client.guilds.cache.get(process.env.guild).members.cache,
+			guild : process.env.guild,
+			token : process.env.token
 		}
 	});
 });
@@ -160,7 +159,7 @@ app.post("/setTimeOut",async(req,res) => {
 	let { user , time } = req.body;
 
 	try {
-		await client.guilds.cache.get(config.guild).members.cache.get(user).timeout(parseInt(time),'Zaman Aşımı');
+		await client.guilds.cache.get(process.env.guild).members.cache.get(user).timeout(parseInt(time),'Zaman Aşımı');
 		res.status(200).send({ status : "Başarılı" });
 	}catch(err){
 		res.status(200).send({ status : "Bir hata oluştu. Konsolda görebilirsiniz" , err});
@@ -169,4 +168,4 @@ app.post("/setTimeOut",async(req,res) => {
 //SERVER 
 
 
-app.listen(5555);
+app.listen(process.env.PORT);
