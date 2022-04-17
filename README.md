@@ -1,9 +1,13 @@
 # YAPAN : thegears
+
+# YAYINLAYAN: ARDADEMR
+
 ## GITHUB: https://github.com/thegears/discordjsv13guardbot
 
 # -----------------------------------------------------
 
 # discordjsv13guardbot
+
 Siteli Guard Bot V13
 
 <img src="https://cdn.discordapp.com/attachments/874042688280883251/963825419424006284/unknown.png">
