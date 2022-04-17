@@ -16,11 +16,14 @@ const db = new Database();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({origin:true,credentials: true}));
-app.use(express.static(__dirname + "/out/_next"))
+app.use(express.static(__dirname + "/out"))
 
 //EXPRESS SERVER AYARLAR
+app.get("/panel/:pass",(req,res) => {
+  if(req.params.pass == process.env.pass) res.sendFile(__dirname+"/index.html");
+  else res.send("Yanlış şifre");
+});
 
-app.get()
 
 // BOT
 let kufurliste = ["aq","amk","sik","sg","oç","piç","puşt","orospu","kahpe"];
