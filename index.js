@@ -110,7 +110,10 @@ client.on("roleDelete", async (role) => {
   }
 });
 // BOT
-
+client.on('ready', () => {
+ client.user.setActivity(`Fatih ❤️ S P E A W E R A`)
+ console.log(`${client.user.tag} isimli bot başarıyla şu an aktifleştirildi!`);
+});
 //SERVER
 app.get("/isBotLogined", (req, res) => {
   res.status(200).send({
